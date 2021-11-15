@@ -1,9 +1,11 @@
+{{- $fullName := include "gyeongsik-dev.fullname" . -}}
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "gyeongsik-dev.fullname" . }}
+  name: {{ .Values.service.name }}
   labels:
-    {{- include "gyeongsik-dev.labels" . | nindent 4 }}
+    app: nginx-tomcat
+  namespace: {{ $fullName }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -11,4 +13,4 @@ spec:
       targetPort: http
       protocol: TCP
   selector:
-    {{- include "gyeongsik-dev.selectorLabels" . | nindent 4 }}
+    app: nginx-tomcat
