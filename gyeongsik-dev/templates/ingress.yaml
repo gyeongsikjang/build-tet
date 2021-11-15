@@ -10,7 +10,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: neg-dev-ingress
-  namespace: {{ $fullName }}
+  namespace: {{ .Values.name }}
   labels:
     {{- include "gyeongsik-dev.labels" . | nindent 4 }}
   {{- with .Values.ingress.annotations }}

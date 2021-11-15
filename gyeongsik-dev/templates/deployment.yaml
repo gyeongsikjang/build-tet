@@ -29,7 +29,7 @@ spec:
         nodeAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
       containers:
-        - image: "nginx:latest"
+        - image: "kqkdn1/tomcat_mariadb:nginx_tomcat"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           name: nginx-tomcat
           ports:
