@@ -1,0 +1,9 @@
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: dev-gyeongsik-certificate
+  namespace: {{ .Values.name }}
+spec:
+  domains:
+  # Replace the value with your domain name
+  - dev-spring.gyeongsik-tet.shop

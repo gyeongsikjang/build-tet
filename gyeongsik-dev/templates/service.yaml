@@ -5,7 +5,7 @@ metadata:
   name: {{ .Values.service.name }}
   labels:
     app: nginx-tomcat
-  namespace: {{ $fullName }}
+  namespace: {{ .Values.name }}
 spec:
   type: {{ .Values.service.type }}
   ports:

@@ -20,7 +20,7 @@ maxSurge: 30%
 maxUnavailable: 30%
   
 image:
-  repository: kqkdn1/tomcat_mariadb
+  repository: nginx 
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: nginx_tomcat
