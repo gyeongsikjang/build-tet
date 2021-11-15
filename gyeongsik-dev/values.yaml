@@ -20,10 +20,10 @@ maxSurge: 30%
 maxUnavailable: 30%
   
 image:
-  repository: kqkdn1/tomcat_mariadb 
+  repository: bitnami/nginx 
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: nginx_tomcat
+  tag: "latest"
 
 imagePullSecrets: gyeongsik-secret 
 nameOverride: "dev-gyeongsik"

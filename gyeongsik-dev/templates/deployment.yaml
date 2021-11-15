@@ -23,13 +23,13 @@ spec:
         name: nginx-tomcat 
         app: nginx-tomcat 
     spec:
-      imagePullSecrets:
-      - name: {{ .Values.imagePullSecrets }}
+      #imagePullSecrets:
+      #- name: {{ .Values.imagePullSecrets }}
       affinity:
         nodeAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
       containers:
-        - image: "kqkdn1/tomcat_mariadb:nginx_tomcat"
+        - image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           name: nginx-tomcat
           ports:
