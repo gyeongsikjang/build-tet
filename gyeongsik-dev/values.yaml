@@ -4,7 +4,7 @@
 
 # Default WordPress Site Info
 name: dev-gyeongsik        # Kubernetes Namespace (A-z,0-9,'-')
-app: dev-tomcat            # kubernetes App label 
+app: nginx-tomcat            # kubernetes App label 
 domain: dev-spring.gyeongsik-tet.shop     # Domain, e.g., mysite.com, mysite2.com, dev.anysite.com, etc.
 storage: 50Gi      # Storage Size
 ssd: false         # true=ssd, false=standard default
