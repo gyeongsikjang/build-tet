@@ -5,12 +5,12 @@ metadata:
   name: {{ include "gyeongsik-dev.fullname" . }}
   namespace: {{ .Values.name }}
   labels:
-    {{- include "gyeongsik-dev.labels" . | nindent 4 }}
+    app:  {{ .Values.name }}
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: {{ include "gyeongsik-dev.fullname" . }}
+    name: {{ .Values.app }}
   minReplicas: {{ .Values.autoscaling.minReplicas }}
   maxReplicas: {{ .Values.autoscaling.maxReplicas }}
   metrics:
