@@ -3,6 +3,7 @@ apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
   name: {{ include "gyeongsik-dev.fullname" . }}
+  namespace: {{ .Values.name }}
   labels:
     {{- include "gyeongsik-dev.labels" . | nindent 4 }}
 spec:
