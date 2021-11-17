@@ -7,6 +7,15 @@ metadata:
     app: nginx-tomcat 
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
 spec:
+  hostAliases:
+  - ip: 34.64.186.194
+    hostnames:
+    - "codeserver.gyeongsik-tet.shop"
+  nodeSelector:
+    cloud.google.com/gke-nodepool: {{ .Values.nodepool }}
+  affinity:
+    nodeAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
   replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
@@ -23,11 +32,15 @@ spec:
         name: nginx-tomcat 
         app: nginx-tomcat 
     spec:
+      initContainers:
+        - name: clone
+          image: alpine/git:latest
+          {{- with .Values.initCommand }}
+          command:
+            {{- toYaml . | nindent 10 }}
+          {{- end }}
       #imagePullSecrets:
       #- name: {{ .Values.imagePullSecrets }}
-      affinity:
-        nodeAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
       containers:
         - image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}

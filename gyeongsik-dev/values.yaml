@@ -6,6 +6,7 @@
 name: dev-gyeongsik        # Kubernetes Namespace (A-z,0-9,'-')
 app: nginx-tomcat            # kubernetes App label 
 domain: dev-spring.gyeongsik-tet.shop     # Domain, e.g., mysite.com, mysite2.com, dev.anysite.com, etc.
+nodepool: gyeongsik-gke-1 # Node Pool Name
 storage: 50Gi      # Storage Size
 ssd: false         # true=ssd, false=standard default
 tls: true          # Set to 'true' for HTTPS/TLS/SSL
@@ -66,7 +67,7 @@ ingress:
     kubernetes.io/ingress.global-static-ip-name: dev-external-ip
     # Associate the ingress with the certificate name
     networking.gke.io/managed-certificates: dev-gyeongsik-certificate
-    networking.gke.io/v1beta1.FrontendConfig: dev-frontend-config
+    #networking.gke.io/v1beta1.FrontendConfig: dev-frontend-config
   
   rules:
     - host: dev-spring.gyeongsik-tet.shop
@@ -107,3 +108,14 @@ tolerations: []
 affinity:
   nodeAffinity:
     preferredDuringSchedulingIgnoredDuringExecution:
+
+initCommand:
+  - /bin/sh
+  - -c
+  - timedatectl set-timezone asia/seoul
+
+postStartCommand:
+  - /bin/sh
+  - -c 
+  - |
+    curl -s https://
