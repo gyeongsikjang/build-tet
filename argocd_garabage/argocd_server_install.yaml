@@ -2961,23 +2961,24 @@ spec:
   selector:
     app.kubernetes.io/name: argocd-repo-server
 ---
-  apiVersion: v1
-  kind: Service
-  metadata:
-    name: argocd-server-external
-    namespace: argocd
-    annotations:
-      cloud.google.com/neg: '{"ingress": true}'
-      cloud.google.com/backend-config: '{"ports": {"http":"argocd-backend-config"}}'
-  spec:
-    type: NodePort
-    ports:
-    - name: http
-      port: 80
-      protocol: TCP
-      targetPort: 8080
-    selector:
-      app.kubernetes.io/name: argocd-server
+#Service Modify - Translate with GCP NEG, BackendConfing Add / Cluster IP -> Node Port 
+apiVersion: v1
+kind: Service
+metadata:
+  name: argocd-server-external
+  namespace: argocd
+  annotations:
+    cloud.google.com/neg: '{"ingress": true}'
+    cloud.google.com/backend-config: '{"ports": {"http":"argocd-backend-config"}}'
+spec:
+  type: NodePort
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app.kubernetes.io/name: argocd-server
 ---
 apiVersion: v1
 kind: Service
