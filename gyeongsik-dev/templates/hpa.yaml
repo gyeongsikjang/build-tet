@@ -1,31 +1,24 @@
-{{- if .Values.autoscaling.enabled }}
-apiVersion: autoscaling/v2beta1
+apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: {{ include "gyeongsik-dev.fullname" . }}
-  labels:
-    app:  {{ .Values.name }}
+  name: nginx
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: {{ .Values.app }}
-  minReplicas: {{ .Values.autoscaling.minReplicas }}
-  maxReplicas: {{ .Values.autoscaling.maxReplicas }}
+    name: dev-nginx
+  minReplicas: 3
+  maxReplicas: 10
   metrics:
-  {{- if .Values.autoscaling.targetCPUUtilizationPercentage }}
   - type: Resource
-      resource:
-        name: cpu
-        target: 
-        targetAverageUtilization: {{ .Values.autoscaling.targetCPUUtilizationPercentage }}
-  {{- end }}
-  {{- if .Values.autoscaling.targetMemoryUtilizationPercentage }}
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 80
   - type: Resource
-      resource:
-        target: 
-        name: memory
-        targetAverageUtilization: {{ .Values.autoscaling.targetMemoryUtilizationPercentage }}
-  {{- end }}
-{{- end }}
-
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 80
