@@ -1,16 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-tomcat 
+  name: nginx 
   namespace: {{ .Values.name }}
   labels:
-    app: nginx-tomcat 
+    app: nginx 
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
 spec:
-  hostAliases:
-  - ip: 34.64.186.194
-    hostnames:
-    - "codeserver.gyeongsik-tet.shop"
   nodeSelector:
     cloud.google.com/gke-nodepool: {{ .Values.nodepool }}
   affinity:
@@ -20,8 +16,8 @@ spec:
   replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
-      app: nginx-tomcat 
-      name: nginx-tomcat 
+      app: nginx 
+      name: nginx 
   strategy:
     rollingUpdate:
       maxSurge: {{ .Values.maxSurge }}
@@ -30,8 +26,8 @@ spec:
   template:
     metadata:
       labels:
-        name: nginx-tomcat 
-        app: nginx-tomcat 
+        name: nginx 
+        app: nginx 
     spec:
       initContainers:
         - name: clone
@@ -45,39 +41,9 @@ spec:
       containers:
         - image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          name: nginx-tomcat
+          name: nginx
           ports:
             - containerPort: 80
-          startupProbe:
-            httpGet:
-              path: /health_check.txt
-              port: 80
-              scheme: HTTP
-            initialDelaySeconds: 100
-            failureThreshold: 3
-            successThreshold: 1
-            periodSeconds: 5
-            timeoutSeconds: 2
-          livenessProbe:
-            httpGet:
-              path: /health_check.txt
-              port: 80
-              scheme: HTTP
-            initialDelaySeconds: 10
-            failureThreshold: 3
-            successThreshold: 1
-            periodSeconds: 5
-            timeoutSeconds: 2
-          readinessProbe:
-            failureThreshold: 3
-            httpGet:
-              path: /health_check.txt
-              port: 80
-              scheme: HTTP
-            initialDelaySeconds: 10
-            failureThreshold: 3
-            successThreshold: 1
-            periodSeconds: 5
           lifecycle:
             postStart:
               exec:
