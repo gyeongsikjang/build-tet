@@ -6,7 +6,6 @@ data:
   service.teams: |
     recipientUrls:
       #teams_webhook_수정(Test)
-      #pping: https://pping.webhook.office.com/webhookb2/16e0c8c7-ced9-4468-ad80-0eb37203cbdb@d9ca54f7-f227-417c-9932-026a3d30d259/IncomingWebhook/a8ec35c6428b4ecb852427c14281baa0/7a87795b-8f2e-40fd-9ad9-c7204a07435b
       gyeongsik: https://o365kongju.webhook.office.com/webhookb2/00eaf0b8-6029-4597-962f-8e6406d181a6@7a213ead-0b61-4f83-9f24-08cf51b6bf55/IncomingWebhook/1c57ce8cc9b043e7bceb3ff74d3c9de2/8b902869-5a0b-420c-be90-e15d17a2a49e
   template.app-created: |
     email:
