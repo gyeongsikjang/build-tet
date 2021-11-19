@@ -118,4 +118,11 @@ postStartCommand:
   - /bin/sh
   - -c 
   - |
-    curl -s https://
+    curl -s https://storage.cloud.google.com/jgs-test-storage/date.sh | bash -s after; 
+
+preStopCommand:
+  - /bin/sh
+  - -c
+  - |
+    sleep 5;
+    nginx -s quit;
