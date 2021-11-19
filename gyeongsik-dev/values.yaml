@@ -109,20 +109,20 @@ affinity:
   nodeAffinity:
     preferredDuringSchedulingIgnoredDuringExecution:
 
-initCommand:
-  - /bin/sh
-  - -c
-  - timedatectl set-timezone asia/seoul
+#initCommand:
+#  - /bin/sh
+#  - -c
+#  - timedatectl set-timezone asia/seoul
 
-postStartCommand:
-  - /bin/sh
-  - -c 
-  - |
-    curl -s https://storage.cloud.google.com/jgs-test-storage/date.sh | bash -s after; 
+#postStartCommand:
+#  - /bin/sh
+#  - -c 
+#  - |
+#    curl -s https://storage.cloud.google.com/jgs-test-storage/date.sh | bash -s after; 
 
-preStopCommand:
-  - /bin/sh
-  - -c
-  - |
-    sleep 5;
-    nginx -s quit;
+#preStopCommand:
+#  - /bin/sh
+#  - -c
+#  - |
+#    sleep 5;
+#    nginx -s quit;
