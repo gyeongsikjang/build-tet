@@ -9,8 +9,6 @@ metadata:
     app: prd-nginx 
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
 spec:
-  nodeSelector:
-    cloud.google.com/gke-nodepool: {{ .Values.nodepool }}
   #affinity:
   #  nodeAffinity:
   #    preferredDuringSchedulingIgnoredDuringExecution:
@@ -54,6 +52,8 @@ spec:
         #    memory: {{ .Values.limitsMemory | quote }}
         #    cpu: {{ .Values.limitsCpu | quote }}
       #terminationGracePeriodSeconds: 30
+      nodeSelector:
+        cloud.google.com/gke-nodepool: {{ .Values.nodepool }}
   strategy:
     blueGreen:
       activeService: rollout-bluegreen-active 
