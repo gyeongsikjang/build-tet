@@ -59,12 +59,12 @@ securityContext:
 service:
   name: rollout-bluegreen-active
   type: NodePort 
-  port: 80
+  port: 8080
 
 prservice:
   name: rollout-blugreen-preview
   type: NodePort
-  port: 80 
+  port: 8080 
   
 ingress:
   enabled: true 
@@ -83,6 +83,13 @@ ingress:
         - path: /*
           backend:
             serviceName: rollout-bluegreen-active
+            servicePort: 80
+    - host: prd-nginx.gyeongsik-tet.shop
+      http:
+        paths:
+        - path: /*
+          backend:
+            serviceName: rollout-bluegreen-preview
             servicePort: 80
   tls: []
   #  - secretName: chart-example-tls
