@@ -54,10 +54,10 @@ spec:
         #    memory: {{ .Values.limitsMemory | quote }}
         #    cpu: {{ .Values.limitsCpu | quote }}
       #terminationGracePeriodSeconds: 30
-    strategy:
-      blueGreen:
-        activeService: rollout-bluegreen-active 
-        previewService:  rollout-blugreen-preview 
-        autoPromotionEnabled: false 
+  strategy:
+    blueGreen:
+      activeService: rollout-bluegreen-active 
+      previewService:  rollout-blugreen-preview 
+      autoPromotionEnabled: false 
 
       
