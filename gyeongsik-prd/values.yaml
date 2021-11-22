@@ -18,13 +18,13 @@ requestsCpu: "1.0"
 limitsMemory: "2048Mi"
 limitsCpu: "1.5"
 
-replicaCount: 1
+replicaCount: 2
 revisionHistoryLimit: 4
 maxSurge: 30%
 maxUnavailable: 30%
   
 image:
-  repository: httpd
+  repository: nginx 
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"

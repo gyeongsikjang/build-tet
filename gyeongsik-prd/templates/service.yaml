@@ -11,6 +11,7 @@ spec:
     - port: {{ .Values.service.port }}
       targetPort: 80
       protocol: TCP
+      nodePort: 30081
   selector:
     app: prd-nginx 
 ---
@@ -27,5 +28,6 @@ spec:
     - port: {{ .Values.prservice.port }}
       targetPort: 80
       protocol: TCP
+      nodePort: 30082
   selector:
     app: prd-nginx 
