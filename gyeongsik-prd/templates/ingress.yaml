@@ -1,5 +1,5 @@
 {{- if .Values.ingress.enabled -}}
-{{- $fullName := include "gyeongsik-dev.fullname" . -}}
+{{- $fullName := include "gyeongsik-prd.fullname" . -}}
 {{- $svcPort := .Values.service.port -}}
 {{- if and .Values.ingress.className (not (semverCompare ">=1.18-0" .Capabilities.KubeVersion.GitVersion)) }}
   {{- if not (hasKey .Values.ingress.annotations "kubernetes.io/ingress.class") }}
@@ -12,7 +12,7 @@ metadata:
   name: neg-prd-ingress
   namespace: {{ .Values.name }}
   labels:
-    {{- include "gyeongsik-dev.labels" . | nindent 4 }}
+    {{- include "gyeongsik-prd.labels" . | nindent 4 }}
   {{- with .Values.ingress.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}

@@ -1,0 +1,135 @@
+# Default values for gyeongsik-prd.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# Default WordPress Site Info
+name: prd-gyeongsik        # Kubernetes Namespace (A-z,0-9,'-')
+app: prd-nginx            # kubernetes App label 
+domain: prd-nginx.gyeongsik-tet.shop     # Domain, e.g., mysite.com, mysite2.com, prd.anysite.com, etc.
+nodepool: prd-nodepool # Node Pool Name
+storage: 50Gi      # Storage Size
+ssd: false         # true=ssd, false=standard default
+tls: true          # Set to 'true' for HTTPS/TLS/SSL
+
+
+
+requestsMemory: "1024Mi"
+requestsCpu: "1.0"
+limitsMemory: "2048Mi"
+limitsCpu: "1.5"
+
+replicaCount: 1
+revisionHistoryLimit: 4
+maxSurge: 30%
+maxUnavailable: 30%
+  
+image:
+  repository: bitnami/nginx 
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "latest"
+
+imagePullSecrets: gyeongsik-secret 
+nameOverride: "prd-gyeongsik"
+fullnameOverride: "prd-gyeongsik"
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: false 
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext:
+  privileged: true 
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  name: rollout-bluegreen-active
+  type: NodePort 
+  port: 80
+
+prservice:
+  name: rollout-blugreen-preview
+  type: NodePort
+  port: 80 
+  
+ingress:
+  enabled: true 
+  className: ""
+  annotations:
+    kubernetes.io/ingress.class: "gce"
+    kubernetes.io/ingress.global-static-ip-name: nginx-prd-static
+    # Associate the ingress with the certificate name
+    networking.gke.io/managed-certificates: prd-nginx-certificate
+    #networking.gke.io/v1beta1.FrontendConfig: prd-frontend-config
+  
+  rules:
+    - host: prd-nginx.gyeongsik-tet.shop
+      http:
+        paths:
+        - path: /*
+          backend:
+            serviceName: rollout-bluegreen-active
+            servicePort: 80
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+autoscaling:
+  enabled: true
+  minReplicas: 5
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 80        
+  targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity:
+  nodeAffinity:
+    preferredDuringSchedulingIgnoredDuringExecution:
+
+#initCommand:
+#  - /bin/sh
+#  - -c
+#  - timedatectl set-timezone asia/seoul
+
+#postStartCommand:
+#  - /bin/sh
+#  - -c 
+#  - |
+#    curl -s https://storage.cloud.google.com/jgs-test-storage/date.sh | bash -s after; 
+
+#preStopCommand:
+#  - /bin/sh
+#  - -c
+#  - |
+#    sleep 5;
+#    nginx -s quit;
