@@ -59,12 +59,12 @@ securityContext:
 service:
   name: rollout-bluegreen-active
   type: NodePort 
-  port: 8080
+  port: 80
 
 prservice:
   name: rollout-blugreen-preview
   type: NodePort
-  port: 8080 
+  port: 80 
   
 ingress:
   enabled: true 
