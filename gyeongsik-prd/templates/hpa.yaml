@@ -1,5 +1,5 @@
 {{- if .Values.autoscaling.enabled }}
-apiVersion: autoscaling/v2beta1
+apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
   name: {{ include "gyeongsik-prd.fullname" . }}
@@ -27,18 +27,5 @@ spec:
       resource:
         name: memory
         targetAverageUtilization: {{ .Values.autoscaling.targetMemoryUtilizationPercentage }}
-  behavior:
-    scaleDown:
-      stabilizationWindowSeconds: 180
-      policies:
-      - type: Pods
-        value: 1
-        periodSeconds: 60
-    scaleUp:
-      stabilizationWindowSeconds: 0
-      policies:
-      - type: Percent
-        value: 100
-        periodSeconds: 60
     {{- end }}
 {{- end }}
