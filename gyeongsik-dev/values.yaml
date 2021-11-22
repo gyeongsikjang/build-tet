@@ -6,7 +6,7 @@
 name: dev-gyeongsik        # Kubernetes Namespace (A-z,0-9,'-')
 app: dev-nginx            # kubernetes App label 
 domain: dev-nginx.gyeongsik-tet.shop     # Domain, e.g., mysite.com, mysite2.com, dev.anysite.com, etc.
-nodepool: gyeongsik-gke-1 # Node Pool Name
+nodepool: dev-nodepool # Node Pool Name
 storage: 50Gi      # Storage Size
 ssd: false         # true=ssd, false=standard default
 tls: true          # Set to 'true' for HTTPS/TLS/SSL
