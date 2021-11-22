@@ -24,7 +24,7 @@ maxSurge: 30%
 maxUnavailable: 30%
   
 image:
-  repository: nginx
+  repository: httpd
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
