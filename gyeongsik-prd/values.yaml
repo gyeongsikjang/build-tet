@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 
 # Default WordPress Site Info
-name: prd-gyeongsik        # Kubernetes Namespace (A-z,0-9,'-')
+name: prd-gyeongsik-1        # Kubernetes Namespace (A-z,0-9,'-')
 app: prd-nginx            # kubernetes App label 
 domain: prd-nginx.gyeongsik-tet.shop     # Domain, e.g., mysite.com, mysite2.com, prd.anysite.com, etc.
 nodepool: prd-node-pool # Node Pool Name
