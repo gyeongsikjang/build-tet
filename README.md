@@ -22,24 +22,29 @@
 ## 목차
 
 * ArgoCD-Deploy
+
   * Folders
   ```
   argocd_garabage
   ```
+
   * git pull
   ```
   git pull https://github.com/JangGyeongSik/build-tet.git 
   ```
+
   * Namespace Create
   ```
   kubectl create ns argocd
   ```
+
   * Modify YAML - with GCP(GKE)
     * BackendConfig.yaml
     * FrontendConfig.yaml
     * ingress.yaml
     * argocd_server_install.yaml
     * argocd_rollout.yaml
+
 
 ## 별첨
 
