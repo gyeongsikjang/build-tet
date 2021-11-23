@@ -24,10 +24,10 @@ maxSurge: 30%
 maxUnavailable: 30%
   
 image:
-  repository: nginx 
+  repository: argoproj/rollouts-demo 
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "1.1.4"
+  tag: "blue"
 
 imagePullSecrets: gyeongsik-secret 
 nameOverride: "prd-gyeongsik"
@@ -74,7 +74,7 @@ ingress:
     kubernetes.io/ingress.global-static-ip-name: nginx-prd-static
     # Associate the ingress with the certificate name
     networking.gke.io/managed-certificates: prd-nginx-certificate
-    #networking.gke.io/v1beta1.FrontendConfig: prd-frontend-config
+    networking.gke.io/v1beta1.FrontendConfig: prd-frontend-config
   
   rules:
     - host: prd-nginx.gyeongsik-tet.shop

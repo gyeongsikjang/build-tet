@@ -9,7 +9,7 @@ spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: 80
+      targetPort: 8080
       protocol: TCP
   selector:
     app: prd-nginx 
@@ -25,7 +25,7 @@ spec:
   type: {{ .Values.prservice.type }}
   ports:
     - port: {{ .Values.prservice.port }}
-      targetPort: 80
+      targetPort: 8080
       protocol: TCP
   selector:
     app: prd-nginx 
