@@ -12,7 +12,7 @@ spec:
     timeoutSec: 3
     type: HTTP
     requestPath: /*
-    port: 80
+    port: 8080
   logging:
     enable: true
     sampleRate: 1.0
