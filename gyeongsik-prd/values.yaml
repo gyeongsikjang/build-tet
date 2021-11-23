@@ -27,7 +27,7 @@ image:
   repository: nginx 
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "1.2.1"
+  tag: "1.1.4"
 
 imagePullSecrets: gyeongsik-secret 
 nameOverride: "prd-gyeongsik"
