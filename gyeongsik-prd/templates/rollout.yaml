@@ -18,11 +18,11 @@ spec:
     matchLabels:
       app: prd-nginx 
       name: nginx 
-  strategy:
-    rollingUpdate:
-      maxSurge: {{ .Values.maxSurge }}
-      maxUnavailable: {{ .Values.maxUnavailable }}
-    type: RollingUpdate
+  #strategy:
+  #  rollingUpdate:
+  #    maxSurge: {{ .Values.maxSurge }}
+  #    maxUnavailable: {{ .Values.maxUnavailable }}
+  #  type: RollingUpdate
   template:
     metadata:
       labels:
