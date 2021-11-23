@@ -1,7 +1,7 @@
 apiVersion: networking.gke.io/v1
 kind: ManagedCertificate
 metadata:
-  name: prd-nginx-certificate
+  name: prd-nginx-certificate-1
   namespace: {{ .Values.name }}
 spec:
   domains:
