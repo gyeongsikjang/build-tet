@@ -41,7 +41,7 @@ spec:
       containers:
         - image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          name: nginx
+          name: rollout-demo
           ports:
             - containerPort: 8080
         #resources:
@@ -58,6 +58,6 @@ spec:
     blueGreen:
       activeService: rollout-bluegreen-active 
       previewService:  rollout-blugreen-preview 
-      autoPromotionEnabled: true 
+      autoPromotionEnabled: false
 
       
