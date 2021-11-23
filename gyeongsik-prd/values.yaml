@@ -74,7 +74,7 @@ ingress:
     kubernetes.io/ingress.global-static-ip-name: 	prd-gyeongsik-static
     # Associate the ingress with the certificate name
     networking.gke.io/managed-certificates: prd-nginx-certificate
-    #networking.gke.io/v1beta1.FrontendConfig: prd-frontend-config
+    networking.gke.io/v1beta1.FrontendConfig: prd-frontend-config
   
   rules:
     - host: prd-nginx.gyeongsik-tet.shop
