@@ -88,7 +88,7 @@
     kubectl argo rollouts list  rollout 
     kubectl argo rollouts promote [Rollout_LIST_NAME]
     ```
-    * Pod Roll out Check
+    * Pod Rollout Check
     ```
     kubectl get po -n [NAMESPACE_NAME]
     ```
