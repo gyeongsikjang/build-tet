@@ -45,6 +45,10 @@
     * argocd_server_install.yaml
     * argocd_rollout.yaml
 
+  * Deploy
+  ```
+  kubectl apply -f argocd_garabage/
+  ```
 
 ## 별첨
 
