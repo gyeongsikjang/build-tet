@@ -27,7 +27,8 @@ image:
   repository: argoproj/rollouts-demo 
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "blue"
+  #tag: "blue"
+  tag: "green"
 
 imagePullSecrets: gyeongsik-secret 
 nameOverride: "prd-gyeongsik"

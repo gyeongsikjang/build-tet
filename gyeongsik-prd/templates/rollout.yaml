@@ -39,8 +39,8 @@ spec:
       #imagePullSecrets:
       #- name: {{ .Values.imagePullSecrets }}
       containers:
-        - image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-        #- image: argoproj/rollout-demo:green 
+        #- image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        - image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}" 
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           name: rollout-demo
           ports:
