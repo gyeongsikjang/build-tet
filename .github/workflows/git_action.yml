@@ -12,20 +12,15 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   job_1:
     name: Date Update Shell Start 
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      # If you need to, you can check out your repo to a different location
-      with:
-        path: './gyeongsik-prd/'
       - shell: bash
         run: |
-          sh -x ./date_update.sh
+          sh -x ./gyeongsik-prd/date_update.sh
 
 # jobs:
 #   # This workflow contains a single job called "build"
