@@ -20,7 +20,7 @@ jobs:
     steps:
       - shell: bash
         run: |
-          pwd
+          pwd; ls -alh
           # cd gyeongsik-prd
           # sh -x /home/runner/work/build-tet/build-tet/gyeongsik-prd/date_update.sh 
       # - shell: bash
