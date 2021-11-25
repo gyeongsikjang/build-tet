@@ -25,8 +25,16 @@ jobs:
           git clone https://github.com/JangGyeongSik/build-tet.git;
           sleep 3
           cd build-tet/gyeongsik-prd/
-          sh -x date_update.sh            
-
+          sh -x date_update.sh       
+  build:
+    needs: Setup  
+    runs-on: ubuntu-latest
+    steps:
+      - shell: bash
+        run: |
+          git add .
+          git commit -m "modify image tags"
+          git push -u origin main
 
 # jobs:
 #   # This workflow contains a single job called "build"
