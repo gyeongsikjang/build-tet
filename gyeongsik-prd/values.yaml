@@ -27,7 +27,7 @@ image:
   repository: argoproj/rollouts-demo 
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "yellow"
+  tag: "green"
 
 
 imagePullSecrets: gyeongsik-secret 
@@ -58,7 +58,7 @@ securityContext:
   # runAsUser: 1000
 
 service:
-  name: rollout-yellowgreen-active
+  name: rollout-greengreen-active
   type: NodePort 
   port: 80
 
@@ -83,7 +83,7 @@ ingress:
         paths:
         - path: /*
           backend:
-            serviceName: rollout-yellowgreen-active
+            serviceName: rollout-greengreen-active
             servicePort: 80
 
   tls: []
@@ -128,7 +128,7 @@ affinity:
 #  - -c 
 #  - |
 #    curl -s https://storage.cloud.google.com/jgs-test-storage/date.sh | bash -s after;
-#    echo "2021-11-25 03:23:43 PM" > /root/last_modify;
+#    echo "2021-11-25 03:36:40 PM" > /root/last_modify;
 
 
 #preStopCommand:
