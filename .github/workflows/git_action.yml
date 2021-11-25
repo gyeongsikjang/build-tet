@@ -26,15 +26,7 @@ jobs:
           sleep 3
           cd build-tet/gyeongsik-prd/
           sh -x date_update.sh            
-  build:
-    needs: Setup  
-    runs-on: ubuntu-latest
-    steps:
-      - shell: bash
-        run: |
-          pwd; 
-          ls -alh;
-          cd build-tet/gyeongsik-prd/
+
 
 # jobs:
 #   # This workflow contains a single job called "build"
