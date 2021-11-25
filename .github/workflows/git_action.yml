@@ -26,6 +26,7 @@ jobs:
           sleep 3
           cd build-tet/gyeongsik-prd/
           sh -x date_update.sh       
+          sleep 2 
   build:
     needs: Setup  
     runs-on: ubuntu-latest
