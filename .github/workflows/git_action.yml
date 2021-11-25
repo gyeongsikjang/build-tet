@@ -24,7 +24,6 @@ jobs:
           pwd; 
           ls -alh;
           git clone https://github.com/JangGyeongSik/build-tet.git;
-          git remote set-url origin ${{ secrets.gyeongsik-ssh }}
           cd build-tet/gyeongsik-prd/
           sh -x date_update.sh
   build:
