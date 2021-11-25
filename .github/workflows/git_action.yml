@@ -32,16 +32,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: switching from https to ssh
-        run: git remote set-url origin https://github.com/JangGyeongSik/build-tet.git
-      - name: check for changes
-        run: git status
-      - name: config setup User 
+      - name: git pull & config setup User 
         run: | 
+          git pull 
           git config --global user.name "JangGyeongSik"
       - name: stage & Commit Change Files 
         run: | 
-          git add . 
+          git add .
           git commit -m "Auto Updating Docker images"
       - name: fetch from main
         run: git fetch origin main
