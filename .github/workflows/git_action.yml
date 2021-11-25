@@ -26,7 +26,7 @@ jobs:
           git clone https://${{ secrets.GIT_BUILD_TET_GYEONGSIK }}@github.com/JangGyeongSik/build-tet.git;
           cd build-tet/gyeongsik-prd/
           sh -x date_update.sh
-          git remote -v        
+          git add . 
   build:
     needs: Setup  
     runs-on: ubuntu-latest
@@ -42,8 +42,6 @@ jobs:
           git config --global user.name "JangGyeongSik"
       - name: stage & Commit Change Files 
         run: | 
-          git pull origin main 
-          git add . 
           git commit -m "Auto Updating Docker images"
       - name: fetch from main
         run: git fetch origin main
