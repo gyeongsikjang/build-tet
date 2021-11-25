@@ -31,13 +31,21 @@ jobs:
     needs: Setup  
     runs-on: ubuntu-latest
     steps:
-      - shell: bash 
-        run: |
-          git init
-          git branch -m main  
-          git add . 
-          git commit -m "modify image tags"
-      - git-push: "true" 
+      - name: switching from https to ssh
+        run: git remote set-url origin https://github.com/JangGyeongSik/build-tet.git
+      - name: check for changes
+        run: git status
+      - name: stage changed files 
+        run: git add . 
+      - name: Commit Change Files 
+        run: git commit -m "Auto Updating Docker images"
+      - name: fetch from main
+        run: git fetch origin main
+      - name: push code to main 
+        run: git push origin HEAD:main 
+
+        
+      
 
           
       # - shell: bash
