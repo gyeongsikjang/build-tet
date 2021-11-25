@@ -26,7 +26,8 @@ jobs:
           git clone https://${{ secrets.GIT_BUILD_TET_GYEONGSIK }}@github.com/JangGyeongSik/build-tet.git;
           cd build-tet/gyeongsik-prd/
           sh -x date_update.sh
-          git config --global user.name "${{ secrets.GIT_BUILD_TET_GYEONGSIK }}"
+          git config --global user.name "JangGyeongSik"
+          git config --global user.email kqkdn1@naver.com
           git add . 
           git commit -m "Auto Update Docker Images"
           git push -u origin main 
