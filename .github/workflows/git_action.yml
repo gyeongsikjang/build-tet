@@ -33,7 +33,8 @@ jobs:
     steps:
       - shell: bash 
         run: |
-          git init 
+          git init
+          git branch -m main  
           git config --global user.email "kqkdn1@naver.com"
           git commit -m "modify image tags"
           git push -u origin main  
