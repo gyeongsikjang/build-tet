@@ -33,6 +33,7 @@ jobs:
     steps:
       - shell: bash 
         run: |
+          git init 
           git config user.email "${{ secrets.GIT_BUILD_TET_GYEONGSIK }}"
           git commit -m "modify image tags"
           git push -u origin main  
