@@ -31,13 +31,23 @@ jobs:
     needs: Setup  
     runs-on: ubuntu-latest
     steps:
-      - shell: bash
+      - name: Commit files
         run: |
-          git init 
-          git add .
-          git commit -m "modify image tags"
-          git push -u origin main
-
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git commit -m "modify image tags" 
+      - name: Push changes
+        uses: JangGyeongSik/build-tet@main
+      with:
+        github_token: ${{ secrets.GIT_BUILD_TET_GYEONGSIK }}
+        branch: ${{ github.ref }}
+      # - shell: bash
+      #   run: |
+      #     git config --global user.name "JangGyeongSik"
+      #     git init 
+      #     git add .
+      #     git commit -m "modify image tags"
+      #     git push -u origin main --token ${{ secrets.GIT_BUILD_TET_GYEONGSIK }}
 # jobs:
 #   # This workflow contains a single job called "build"
 #   build:
