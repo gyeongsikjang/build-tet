@@ -33,7 +33,7 @@ jobs:
           git add . 
           git commit -m "Add changes" -a
       - name: Push changes
-        uses: JangGyeongSik/build-tet
+        uses: actions/checkout@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
