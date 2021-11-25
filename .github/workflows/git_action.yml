@@ -32,7 +32,7 @@ jobs:
           git checkout "main"
           git add . 
           git commit -m "Automated Update Docker Image & Date_Time"
-          git push
+          git push -u origin main 
       # - name: Commit files
       #   run: |
       #     git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
