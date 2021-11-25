@@ -35,9 +35,9 @@ jobs:
         run: |
           git init
           git branch -m main  
-          git config --global user.email "kqkdn1@naver.com"
+          git add . 
           git commit -m "modify image tags"
-          git push -u origin main  
+      - git-push: "true" 
 
           
       # - shell: bash
