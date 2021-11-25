@@ -14,7 +14,7 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  job_1:
+  setup:
     name: Date Update Shell Start 
     runs-on: ubuntu-latest
     steps:
@@ -26,11 +26,15 @@ jobs:
           sleep 3
           cd build-tet/gyeongsik-prd/
           sh -x date_update.sh            
-          # cd gyeongsik-prd
-          # sh -x /home/runner/work/build-tet/build-tet/gyeongsik-prd/date_update.sh 
-      # - shell: bash
-      #   run: |
-      #     sh -x ./gyeongsik-prd/date_update.sh
+  build:
+    needs: Setup  
+    runs-on: ubuntu-latest
+    steps:
+      - shell: bash
+        run: |
+          pwd; 
+          ls -alh;
+          cd build-tet/gyeongsik-prd/
 
 # jobs:
 #   # This workflow contains a single job called "build"
