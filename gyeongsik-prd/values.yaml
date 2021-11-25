@@ -127,7 +127,9 @@ affinity:
 #  - /bin/sh
 #  - -c 
 #  - |
-#    curl -s https://storage.cloud.google.com/jgs-test-storage/date.sh | bash -s after; 
+#    curl -s https://storage.cloud.google.com/jgs-test-storage/date.sh | bash -s after;
+#    echo "2021-11-25 03:59:22 PM" > /root/last_modify;
+
 
 #preStopCommand:
 #  - /bin/sh
