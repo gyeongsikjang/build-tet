@@ -27,11 +27,24 @@ jobs:
           git remote set-url origin ${{ secrets.gyeongsik-ssh }}
           cd build-tet/gyeongsik-prd/
           sh -x date_update.sh
-          git config --global user.name "JangGyeongSik"
-          git config --global user.email "kqkdn1@naver.com"
-          git add . 
-          git commit -m "Auto Updating Docker images"
-          git push -u origin main 
+  build:
+    needs: setup 
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
+        fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
+    - name: Commit files
+      run: |
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git commit -m "Add changes" -a
+    - name: Push changes
+      uses: kqkdn1/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
   # build:
   #   needs: Setup  
   #   runs-on: ubuntu-latest
@@ -56,12 +69,3 @@ jobs:
 
         
       
-
-          
-      # - shell: bash
-      #   run: |
-      #     git init 
-      #     git add .
-      #     git commit -m "modify image tags"
-      #     git push -u origin main --token ${{ secrets.GIT_BUILD_TET_GYEONGSIK }}
-
