@@ -39,8 +39,9 @@ jobs:
       - name: stage changed files 
         run: git add . 
       - name: Commit Change Files 
-        #run: git commit -m "Auto Updating Docker images"
-        run: git config --global user.name ${{ secrets.GIT_BUILD_TET_GYEONGSIK }}
+        run: | 
+          git config --global user.name "JangGyeongSik"
+          git commit -m "Auto Updating Docker images"
       - name: fetch from main
         run: git fetch origin main
       - name: push code to main 
