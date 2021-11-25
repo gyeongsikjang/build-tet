@@ -58,12 +58,12 @@ securityContext:
   # runAsUser: 1000
 
 service:
-  name: rollout-yellowgreen-active
+  name: rollout-bg-active
   type: NodePort 
   port: 80
 
 prservice:
-  name: rollout-blugreen-preview
+  name: rollout-bg-preview
   type: NodePort
   port: 80 
   
@@ -83,7 +83,7 @@ ingress:
         paths:
         - path: /*
           backend:
-            serviceName: rollout-yellowgreen-active
+            serviceName: rollout-bg-active
             servicePort: 80
 
   tls: []
