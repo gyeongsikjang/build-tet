@@ -20,7 +20,10 @@ jobs:
     steps:
       - shell: bash
         run: |
-          sh -x ./gyeongsik-prd/date_update.sh
+          pwd 
+      # - shell: bash
+      #   run: |
+      #     sh -x ./gyeongsik-prd/date_update.sh
 
 # jobs:
 #   # This workflow contains a single job called "build"
