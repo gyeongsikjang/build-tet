@@ -31,6 +31,7 @@ jobs:
     needs: Setup  
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v1
       - name: switching from https to ssh
         run: git remote set-url origin https://github.com/JangGyeongSik/build-tet.git
       - name: check for changes
