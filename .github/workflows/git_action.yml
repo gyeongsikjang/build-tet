@@ -26,15 +26,22 @@ jobs:
           git clone https://github.com/JangGyeongSik/build-tet.git;
           cd build-tet/gyeongsik-prd/
           sh -x date_update.sh
-      - name: Commit files
-        run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/JangGyeongSik/build-tet/
           git checkout "main"
           git add . 
-          git commit -m "Automated report"
+          git commit -m "Automated Update Docker Image & Date_Time"
           git push
+      # - name: Commit files
+      #   run: |
+      #     git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      #     git config --local user.name "github-actions[bot]"
+      #     git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/JangGyeongSik/build-tet/
+      #     git checkout "main"
+      #     git add . 
+      #     git commit -m "Automated report"
+      #     git push
       - uses: actions/checkout@v1
         name: Push changes
         with:
