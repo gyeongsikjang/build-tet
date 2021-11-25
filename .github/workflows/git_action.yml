@@ -32,12 +32,13 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add . 
           git commit -m "Add changes" -a
-          git push -u origin main 
       - name: Push changes
         uses: actions/checkout@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
+        run: |
+          git push -u origin main 
 
 
   # build:
