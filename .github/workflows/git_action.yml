@@ -33,7 +33,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: switching from https to ssh
         run: |
-         git remote set-url origin ${{ secrets.gyeongsik-ssh }}
+         git remote set-url origin https://${{ secrets.gyeongsik-ssh }}@github.com/JangGyeongSik/build-tet.git;
       - name: check for changes
         run: git status
       - name: config setup User 
