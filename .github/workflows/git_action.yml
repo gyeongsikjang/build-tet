@@ -27,4 +27,4 @@ jobs:
           default_author: github_actions_tet
       # Runs a single command using the runners shell
       - name: Date Update Shell Start
-        run: ./gyeongsik-prd/date_update.sh 
+        run: ../gyeongsik-prd/date_update.sh 
