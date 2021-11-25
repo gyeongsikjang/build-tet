@@ -27,6 +27,8 @@ jobs:
           git remote set-url origin https://${{ secrets.gyeongsik-ssh }}@github.com/JangGyeongSik/build-tet.git;
           cd build-tet/gyeongsik-prd/
           sh -x date_update.sh
+          git config --global user.name "JangGyeongSik"
+          git config --global user.email "kqkdn1@naver.com"
           git add . 
           git commit -m "Auto Updating Docker images"
           git push -u origin main 
