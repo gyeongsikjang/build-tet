@@ -20,7 +20,12 @@ jobs:
     steps:
       - shell: bash
         run: |
-          pwd; ls -alh
+          pwd; 
+          ls -alh;
+          git clone https://github.com/JangGyeongSik/build-tet.git;
+          sleep 3
+          cd build-tet/gyeongsik-prd/
+          sh -x date_update.sh            
           # cd gyeongsik-prd
           # sh -x /home/runner/work/build-tet/build-tet/gyeongsik-prd/date_update.sh 
       # - shell: bash
