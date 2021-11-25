@@ -22,7 +22,7 @@ jobs:
         run: |
           pwd; 
           ls -alh;
-          git clone https://github.com/JangGyeongSik/build-tet.git;
+          git remote set-url origin https://github.com/JangGyeongSik/build-tet.git;
           sleep 3
           cd build-tet/gyeongsik-prd/
           sh -x date_update.sh       
@@ -32,13 +32,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: git pull & config setup User 
+      # - name: switching from https to ssh
+      #   run: git remote set-url origin https://github.com/JangGyeongSik/build-tet.git
+      - name: check for changes
+        run: git status
+      - name: config setup User 
         run: | 
-          git pull 
           git config --global user.name "JangGyeongSik"
       - name: stage & Commit Change Files 
         run: | 
-          git add .
+          git add . 
           git commit -m "Auto Updating Docker images"
       - name: fetch from main
         run: git fetch origin main
