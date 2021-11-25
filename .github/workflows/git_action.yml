@@ -18,22 +18,23 @@ jobs:
     name: Date Update Shell Start 
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v1
       - shell: bash
         run: |
           pwd; 
           ls -alh;
-          git remote set-url origin https://github.com/JangGyeongSik/build-tet.git;
-          sleep 3
+          git clone https://${{ secrets.GIT_BUILD_TET_GYEONGSIK }}@github.com/JangGyeongSik/build-tet.git;
           cd build-tet/gyeongsik-prd/
-          sh -x date_update.sh       
-          sleep 2 
+          sh -x date_update.sh
+          git remote -v        
   build:
     needs: Setup  
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      # - name: switching from https to ssh
-      #   run: git remote set-url origin https://github.com/JangGyeongSik/build-tet.git
+      - uses: actions/checkout@v2
+      - name: switching from https to ssh
+        run: |
+         git remote set-url origin https://${{ secrets.GIT_BUILD_TET_GYEONGSIK }}@github.com/JangGyeongSik/build-tet.git
       - name: check for changes
         run: git status
       - name: config setup User 
