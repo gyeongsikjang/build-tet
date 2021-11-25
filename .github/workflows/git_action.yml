@@ -33,7 +33,6 @@ jobs:
     steps:
       - shell: bash
         run: |
-          git config --global user.name "JangGyeongSik"
           git init 
           git add .
           git commit -m "modify image tags"
