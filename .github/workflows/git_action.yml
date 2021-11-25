@@ -40,7 +40,7 @@ jobs:
         git config --local user.name "github-actions[bot]"
         git commit -m "Add changes" -a
     - name: Push changes
-      uses: kqkdn1/github-push-action@master
+      uses: JangGyeongSik/build-tet@main
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: ${{ github.ref }}

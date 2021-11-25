@@ -1,6 +1,6 @@
 name: 'GitHub Push'
 description: 'Pushing to GitHub repository local changes'
-author: 'kqkdn1'
+author: 'JangGyeongSik/build-tet'
 branding:
   icon: upload-cloud
   color: green
