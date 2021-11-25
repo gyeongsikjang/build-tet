@@ -38,7 +38,7 @@ jobs:
           git commit -m "modify image tags" 
       - name: Push changes
         uses: JangGyeongSik/build-tet@main
-      with:
-        github_token: ${{ secrets.GIT_BUILD_TET_GYEONGSIK }}
-        branch: ${{ github.ref }}
+        with:
+          github_token: ${{ secrets.GIT_BUILD_TET_GYEONGSIK }}
+          branch: ${{ github.ref }}
 
