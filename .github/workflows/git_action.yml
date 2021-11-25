@@ -27,26 +27,28 @@ jobs:
           cd build-tet/gyeongsik-prd/
           sh -x date_update.sh
           git add . 
-  build:
-    needs: Setup  
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: switching from https to ssh
-        run: |
-         git remote set-url origin https://${{ secrets.GIT_BUILD_TET_GYEONGSIK }}@github.com/JangGyeongSik/build-tet.git
-      - name: check for changes
-        run: git status
-      - name: config setup User 
-        run: | 
-          git config --global user.name "JangGyeongSik"
-      - name: stage & Commit Change Files 
-        run: | 
-          git commit -m "Auto Updating Docker images"
-      - name: fetch from main
-        run: git fetch origin main
-      - name: push code to main 
-        run: git push origin HEAD:main 
+          git commit -m "Auto Update DockerImages"
+          git push -u origin main 
+  # build:
+  #   needs: Setup  
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: switching from https to ssh
+  #       run: |
+  #        git remote set-url origin https://${{ secrets.GIT_BUILD_TET_GYEONGSIK }}@github.com/JangGyeongSik/build-tet.git
+  #     - name: check for changes
+  #       run: git status
+  #     - name: config setup User 
+  #       run: | 
+  #         git config --global user.name "JangGyeongSik"
+  #     - name: stage & Commit Change Files 
+  #       run: | 
+  #         git commit -m "Auto Updating Docker images"
+  #     - name: fetch from main
+  #       run: git fetch origin main
+  #     - name: push code to main 
+  #       run: git push origin HEAD:main 
 
         
       
