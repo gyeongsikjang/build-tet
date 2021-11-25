@@ -56,8 +56,8 @@ spec:
         cloud.google.com/gke-nodepool: {{ .Values.nodepool }}
   strategy:
     blueGreen:
-      activeService: rollout-bluegreen-active 
-      previewService:  rollout-blugreen-preview 
+      activeService: rollout-bg-active 
+      previewService:  rollout-bg-preview 
       autoPromotionEnabled: false 
 
       
