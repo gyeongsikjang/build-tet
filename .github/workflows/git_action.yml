@@ -31,16 +31,13 @@ jobs:
     needs: Setup  
     runs-on: ubuntu-latest
     steps:
-      - name: Commit files
+      - shell: bash 
         run: |
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git commit -m "modify image tags" 
-      - name: Push changes
-        uses: JangGyeongSik/build-tet@main
-        with:
-          github_token: ${{ secrets.GIT_BUILD_TET_GYEONGSIK }}
-          branch: ${{ github.ref }}
+          git config user.email "${{ secrets.GIT_BUILD_TET_GYEONGSIK }}"
+          git commit -m "modify image tags"
+          git push -u origin main  
+
+          
       # - shell: bash
       #   run: |
       #     git init 
