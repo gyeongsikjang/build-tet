@@ -32,6 +32,7 @@ jobs:
     steps:
       - shell: bash
         run: |
+          git init 
           git add .
           git commit -m "modify image tags"
           git push -u origin main
