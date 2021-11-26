@@ -58,6 +58,6 @@ spec:
     blueGreen:
       activeService: rollout-bg-active 
       previewService:  rollout-bg-preview 
-      autoPromotionEnabled: false 
+      autoPromotionEnabled: true  
 
       
