@@ -22,12 +22,11 @@ replicaCount: 2
 revisionHistoryLimit: 4
 maxSurge: 30%
 maxUnavailable: 30%
-kqkdn1/argo-rollout-demo:
 image:
   repository: argoproj/rollouts-demo 
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "green"
+  tag: "blue"
 
 
 imagePullSecrets: gyeongsik-secret 
