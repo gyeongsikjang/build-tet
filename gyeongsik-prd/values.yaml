@@ -27,7 +27,7 @@ image:
   repository: argoproj/rollouts-demo 
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "green"
+  tag: "blue"
 
 
 imagePullSecrets: gyeongsik-secret 
@@ -128,7 +128,7 @@ affinity:
 #  - -c 
 #  - |
 #    curl -s https://storage.cloud.google.com/jgs-test-storage/date.sh | bash -s after;
-#    echo "2021-11-29 01:00:52 AM" > /root/last_modify;
+#    echo "2021-11-29 01:02:59 AM" > /root/last_modify;
 
 
 #preStopCommand:
