@@ -101,7 +101,7 @@ spec:
       #NodeSelector GCP Translate 
       nodeSelector:
         #ncloud.com/nks-nodepool: management-pool
-        cloud.google.com/gke-nodepool: dev-node-pool
+        cloud.google.com/gke-nodepool: default-pool
       containers:
       - command:
         - /app/argocd-notifications-backend

@@ -4,7 +4,7 @@ metadata:
   name: argocd-frontendconfig
   #namespace: argocd 
 spec:
-  sslPolicy: gcp-tet-ssl-policy
+  sslPolicy: ssl-tls12-modern
   redirectToHttps:
     enabled: true
     responseCodeName: "301"

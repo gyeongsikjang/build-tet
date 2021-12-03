@@ -3017,7 +3017,7 @@ spec:
       #NodeSelector Translate GCP
       nodeSelector:
         #ncloud.com/nks-nodepool: management-pool
-        cloud.google.com/gke-nodepool: dev-node-pool
+        cloud.google.com/gke-nodepool: default-pool
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
@@ -3088,7 +3088,7 @@ spec:
       #NodeSelector Translate GCP
       nodeSelector:
         #ncloud.com/nks-nodepool: management-pool
-        cloud.google.com/gke-nodepool: dev-node-pool
+        cloud.google.com/gke-nodepool: default-pool
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
@@ -3140,7 +3140,7 @@ spec:
       #NodeSelector Translate GCP
       nodeSelector:
         #ncloud.com/nks-nodepool: management-pool
-        cloud.google.com/gke-nodepool: dev-node-pool
+        cloud.google.com/gke-nodepool: default-pool
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
@@ -3331,7 +3331,7 @@ spec:
       #NodeSelector Translate GCP
       nodeSelector:
         #ncloud.com/nks-nodepool: management-pool
-        cloud.google.com/gke-nodepool: dev-node-pool
+        cloud.google.com/gke-nodepool: default-pool
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
@@ -3583,7 +3583,7 @@ spec:
       #NodeSelector Translate GCP
       nodeSelector:
         #ncloud.com/nks-nodepool: management-pool
-        cloud.google.com/gke-nodepool: dev-node-pool
+        cloud.google.com/gke-nodepool: default-pool
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:

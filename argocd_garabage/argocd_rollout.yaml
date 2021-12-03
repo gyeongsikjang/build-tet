@@ -13147,7 +13147,7 @@ spec:
     spec:
       nodeSelector:
         #ncloud.com/nks-nodepool: management-pool
-        cloud.google.com/gke-nodepool: dev-node-pool
+        cloud.google.com/gke-nodepool: default-pool
       containers:
       - image: quay.io/argoproj/argo-rollouts:v1.1.0
         imagePullPolicy: Always
