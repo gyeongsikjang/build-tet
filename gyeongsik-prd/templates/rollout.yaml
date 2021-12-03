@@ -46,7 +46,7 @@ spec:
             - containerPort: 8080
           volumeMounts:
           - name: storage-clone 
-            mountPath: "/test/modify"
+            mountPath: "/root/last_modify"
           lifecycle:
             postStart:
               exec:
