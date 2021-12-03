@@ -122,12 +122,14 @@ affinity:
 #  - -c
 #  - timedatectl set-timezone asia/seoul
 
-#postStartCommand:
-#  - /bin/sh
-#  - -c 
-#  - |
-#    curl -s https://storage.cloud.google.com/jgs-test-storage/date.sh | bash -s after;
-#    echo "2021-11-29 02:03:33 AM" > /root/last_modify;
+postStartCommand:
+ - /bin/sh
+ - -c 
+ - |
+   sudo apt-get install curl;
+   mkdir -p /root/last_modify; 
+   curl -s https://storage.cloud.google.com/jgs-asia/k8s-storage-test/date.sh | bash -s after;
+   echo "2021-11-29 02:03:33 AM" > /root/last_modify;
 
 
 #preStopCommand:

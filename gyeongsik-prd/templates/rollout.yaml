@@ -44,6 +44,13 @@ spec:
           name: rollout-demo
           ports:
             - containerPort: 8080
+          lifecycle:
+            postStart:
+              exec:
+                {{- with .Values.postStartCommand }}
+                command:
+                  {{- toYaml . | nindent 18 }}
+                {{- end }}
         #resources:
         #  requests:
         #    memory: {{ .Values.requestsMemory | quote }}
