@@ -44,19 +44,19 @@ spec:
           name: rollout-demo
           ports:
             - containerPort: 8080
-          volumeMounts:
-          - name: storage-clone 
-            mountPath: "/root/last_modify"
-          lifecycle:
-            postStart:
-              exec:
-                {{- with .Values.postStartCommand }}
-                command:
-                  {{- toYaml . | nindent 18 }}
-                {{- end }}
-      volumes:
-      - name: storage-clone
-        emptyDir: {}
+      #     volumeMounts:
+      #     - name: storage-clone 
+      #       mountPath: "/root/last_modify"
+      #     lifecycle:
+      #       postStart:
+      #         exec:
+      #           {{- with .Values.postStartCommand }}
+      #           command:
+      #             {{- toYaml . | nindent 18 }}
+      #           {{- end }}
+      # volumes:
+      # - name: storage-clone
+      #   emptyDir: {}
         #resources:
         #  requests:
         #    memory: {{ .Values.requestsMemory | quote }}
