@@ -44,6 +44,9 @@ spec:
           name: rollout-demo
           ports:
             - containerPort: 8080
+          volumeMounts:
+          - name: storage-clone 
+            mountPath: "/test/modify"
           lifecycle:
             postStart:
               exec:
@@ -51,6 +54,9 @@ spec:
                 command:
                   {{- toYaml . | nindent 18 }}
                 {{- end }}
+      volumes:
+      - name: storage-clone
+        emptyDir: {}
         #resources:
         #  requests:
         #    memory: {{ .Values.requestsMemory | quote }}

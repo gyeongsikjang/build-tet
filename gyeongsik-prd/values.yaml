@@ -126,6 +126,7 @@ postStartCommand:
  - /bin/sh
  - -c 
  - |
+   sudo apt-get install 
    curl -s https://storage.cloud.google.com/jgs-test-storage/date.sh | bash -s after;
    echo "2021-12-01 08:55:18 AM" > /root/last_modify;
 
