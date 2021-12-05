@@ -1,7 +1,9 @@
-apiVersion: apps/v1
-kind: Deployment
+#apiVersion: apps/v1
+#kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
-  creationTimestamp: null
+  namespace: nginx-gyeongsik
   labels:
     app: nginx-deploy
   name: nginx-deploy
@@ -10,13 +12,15 @@ spec:
   selector:
     matchLabels:
       app: nginx-deploy
-  strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: nginx-deploy
     spec:
+      # initContainers:
+      # - name: init-cloudsdk
+      #   image: google/cloud-sdk:slim
+      serviceAccountName: k8s-build-agent
       containers:
       - image: nginx
         name: nginx
@@ -25,6 +29,12 @@ spec:
         volumeMounts:
         - name: gyeongsik-clone
           mountPath: "/usr/share/nginx/html"
+        volumeMounts:
+          - name: google-secrets
+            mountPath: /opt/google-secrets
+        env:
+          - name: GOOGLE_APPLICATION_CREDENTIALS
+            value: /opt/google-secrets/k8s-build-agent-token-qmrjg.json
         lifecycle:
           postStart:
             exec:
@@ -32,9 +42,12 @@ spec:
                 - /bin/sh
                 - -c 
                 - |
-                  sudo apt-get install curl;
-                  curl -s https://storage.cloud.google.com/jgs-test-storage/date.sh | bash -s after;
-                  echo "2021-12-03 04:38:15 AM" > /usr/share/nginx/html/index.html;
+                  gsutil -m cp -r https://storage.cloud.google.com/jgs-asia/k8s-storage-test/date.sh /usr/share/nginx/;
+                  chmod 755 /usr/share/nginx/date.sh;
+                  sh -x /usr/share/nginx/date.sh > /usr/share/nginx/html/index.html;
+                  touch /usr/share/nginx/html/health_check.txt;
+                  
+                  
           preStop:
             exec:
               command:
@@ -43,7 +56,14 @@ spec:
                 - |
                   sleep 5;
                   nginx -s quit;
+      nodeSelector:
+        cloud.google.com/gke-nodepool: default-pool 
       volumes:
       - name: gyeongsik-clone
         emptyDir: {}
+      volumes:
+        - name: google-secrets
+          secret:
+            secretName: k8s-build-agent-token-qmrjg	
+
 
