@@ -9,20 +9,11 @@ metadata:
     app: prd-nginx 
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
 spec:
-  #affinity:
-  #  nodeAffinity:
-  #    preferredDuringSchedulingIgnoredDuringExecution:
-  #    - weight: 1
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       app: prd-nginx 
       name: nginx 
-  #strategy:
-  #  rollingUpdate:
-  #    maxSurge: {{ .Values.maxSurge }}
-  #    maxUnavailable: {{ .Values.maxUnavailable }}
-  #  type: RollingUpdate
   template:
     metadata:
       labels:
@@ -67,6 +58,15 @@ spec:
       terminationGracePeriodSeconds: 30
       nodeSelector:
         cloud.google.com/gke-nodepool: {{ .Values.nodepool }}
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: cloud.google.com/gke-nodepool
+                operator: In
+                values:
+                - app-pool
   strategy:
     blueGreen:
       activeService: rollout-bg-active 
