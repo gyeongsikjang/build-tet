@@ -49,12 +49,7 @@ spec:
       # - name: storage-clone
       #   emptyDir: {}
           resources:
-            requests:
-              memory: {{ .Values.requestsMemory | quote }}
-              cpu: {{ .Values.requestsCpu | quote }}
-            limits:
-              memory: {{ .Values.limitsMemory | quote }}
-              cpu: {{ .Values.limitsCpu | quote }}
+            {{- toYaml .Values.resources | nindent 12 }}  
       terminationGracePeriodSeconds: 30
       nodeSelector:
         cloud.google.com/gke-nodepool: {{ .Values.nodepool }}
