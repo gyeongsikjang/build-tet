@@ -14,9 +14,9 @@ tls: true          # Set to 'true' for HTTPS/TLS/SSL
 
 
 requestsMemory: "1024Mi"
-requestsCpu: "1.5"
+requestsCpu: "250m"
 limitsMemory: "2048Mi"
-limitsCpu: "1.0"
+limitsCpu: "500m"
 
 replicaCount: 2
 revisionHistoryLimit: 4
