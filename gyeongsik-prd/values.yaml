@@ -14,9 +14,9 @@ tls: true          # Set to 'true' for HTTPS/TLS/SSL
 
 
 requestsMemory: "1024Mi"
-requestsCpu: "1"
+requestsCpu: "0.5"
 limitsMemory: "2048Mi"
-limitsCpu: "1.8"
+limitsCpu: "2"
 
 replicaCount: 2
 revisionHistoryLimit: 4
@@ -92,10 +92,10 @@ ingress:
 
 resources: 
   limits:
-    cpu: "1.8"
+    cpu: "2"
     memory: "2048Mi"
   requests:
-    cpu: "1"
+    cpu: "0.5"
     memory: "1024Mi"
 
 autoscaling:
