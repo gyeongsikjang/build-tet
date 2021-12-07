@@ -32,7 +32,7 @@ spec:
       containers:
         - image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}" 
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          name: {{ .Chart.Name }}
+          name: prd-gyeongsik
           ports:
             - containerPort: 8080
       #     volumeMounts:
