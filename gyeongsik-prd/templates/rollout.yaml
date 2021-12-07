@@ -57,13 +57,13 @@ spec:
       # volumes:
       # - name: storage-clone
       #   emptyDir: {}
-        resources:
-         requests:
-           memory: {{ .Values.requestsMemory | quote }}
-           cpu: {{ .Values.requestsCpu | quote }}
-         limits:
-           memory: {{ .Values.limitsMemory | quote }}
-           cpu: {{ .Values.limitsCpu | quote }}
+          resources:
+            requests:
+              memory: {{ .Values.requestsMemory | quote }}
+              cpu: {{ .Values.requestsCpu | quote }}
+            limits:
+              memory: {{ .Values.limitsMemory | quote }}
+              cpu: {{ .Values.limitsCpu | quote }}
       terminationGracePeriodSeconds: 30
       nodeSelector:
         cloud.google.com/gke-nodepool: {{ .Values.nodepool }}
