@@ -3,7 +3,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: {{ include "gyeongsik-prd.fullname" . }}
+  name: {{ include "gyeongsik-prd.fullname" . }} 
   namespace: {{ .Values.name }}
   labels:
     app: prd-nginx 
@@ -13,11 +13,11 @@ spec:
   selector:
     matchLabels:
       app: prd-nginx 
-      name: nginx 
+      name: {{ include "gyeongsik-prd.fullname" . }} 
   template:
     metadata:
       labels:
-        name: nginx 
+        name: {{ include "gyeongsik-prd.fullname" . }} 
         app: prd-nginx 
     spec:
       #initContainers:
