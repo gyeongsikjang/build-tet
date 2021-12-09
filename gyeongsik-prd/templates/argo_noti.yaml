@@ -1,5 +1,6 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
+  namespace: prd-gyeongsik
   annotations:
     notifications.argoproj.io/subscribe.on-sync-succeeded.teams: GCP-ArgoCD
