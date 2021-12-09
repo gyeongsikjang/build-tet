@@ -2,4 +2,4 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   annotations:
-    notifications.argoproj.io/subscribe.on-sync-succeeded.teams: gyeongsik
+    notifications.argoproj.io/subscribe.on-sync-succeeded.teams: 일반
