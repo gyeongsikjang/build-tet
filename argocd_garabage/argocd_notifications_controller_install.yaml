@@ -98,10 +98,8 @@ spec:
       labels:
         app.kubernetes.io/name: argocd-notifications-controller
     spec:
-      #NodeSelector GCP Translate 
       nodeSelector:
-        #ncloud.com/nks-nodepool: management-pool
-        cloud.google.com/gke-nodepool: default-pool
+        cloud.google.com/gke-nodepool: default-pool 
       containers:
       - command:
         - /app/argocd-notifications-backend
@@ -120,3 +118,6 @@ spec:
       - configMap:
           name: argocd-tls-certs-cm
         name: tls-certs
+
+
+
