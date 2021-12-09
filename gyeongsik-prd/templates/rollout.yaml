@@ -67,9 +67,4 @@ spec:
       activeService: rollout-bg-active 
       previewService:  rollout-bg-preview 
       autoPromotionEnabled: true  
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  annotations:
-    notifications.argoproj.io/subscribe.on-sync-succeeded.teams: GCP-ArgoCD
+
