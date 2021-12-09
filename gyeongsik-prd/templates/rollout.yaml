@@ -67,5 +67,3 @@ spec:
       activeService: rollout-bg-active 
       previewService:  rollout-bg-preview 
       autoPromotionEnabled: true  
-
-      

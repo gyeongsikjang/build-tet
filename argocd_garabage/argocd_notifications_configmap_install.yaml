@@ -1,12 +1,15 @@
 apiVersion: v1
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: argocd-notifications-cm
 data:
   #Context ArgoCD URL GCP LB에 맞게 수정
   context: |
     argocdUrl: https://dev-spring.gyeongsik-tet.shop
   service.teams: |
-    recipientUrls:
-      #teams_webhook_수정(Test)
-      gyeongsik: https://o365kongju.webhook.office.com/webhookb2/00eaf0b8-6029-4597-962f-8e6406d181a6@7a213ead-0b61-4f83-9f24-08cf51b6bf55/IncomingWebhook/1c57ce8cc9b043e7bceb3ff74d3c9de2/8b902869-5a0b-420c-be90-e15d17a2a49e
+    recipientUrls: 
+      gyeongsik: https://o365kongju.webhook.office.com/webhookb2/00eaf0b8-6029-4597-962f-8e6406d181a6@7a213ead-0b61-4f83-9f24-08cf51b6bf55/IncomingWebhook/1ad93b2dccb742c0b0af73ee38ef3d19/8b902869-5a0b-420c-be90-e15d17a2a49e
   template.app-created: |
     email:
       subject: Application {{.app.metadata.name}} has been created.
@@ -598,7 +601,3 @@ data:
       send:
       - app-health-Progressing
       when: app.status.health.status == 'Progressing'
-kind: ConfigMap
-metadata:
-  creationTimestamp: null
-  name: argocd-notifications-cm
