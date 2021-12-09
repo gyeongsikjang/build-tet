@@ -27,7 +27,7 @@ spec:
       #    command:
       #      {{- toYaml . | nindent 10 }}
       #    {{- end }}
-      #imagePullSecrets:
+      #imagePullSecrets:##
       #- name: {{ .Values.imagePullSecrets }}
       containers:
         - image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}" 
