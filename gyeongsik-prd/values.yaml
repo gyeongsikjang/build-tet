@@ -75,7 +75,7 @@ ingress:
     # Associate the ingress with the certificate name
     ingress.gcp.kubernetes.io/pre-shared-cert: "prd-gyeongsik-1,prd-gyeongsik-2"
     #networking.gke.io/managed-certificates: prd-nginx-certificate-1
-    #networking.gke.io/v1beta1.FrontendConfig: prd-frontend-config
+    networking.gke.io/v1beta1.FrontendConfig: prd-frontend-config
   
   rules:
     - host: prd-nginx.gyeongsik-tet.shop
