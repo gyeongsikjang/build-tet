@@ -73,7 +73,8 @@ ingress:
     kubernetes.io/ingress.class: "gce"
     kubernetes.io/ingress.global-static-ip-name: 	prd-gyeongsik-static
     # Associate the ingress with the certificate name
-    networking.gke.io/managed-certificates: prd-nginx-certificate-1
+    ingress.gcp.kubernetes.io/pre-shared-cert: "prd-gyeongsik-1,prd-gyeongsik-2"
+    #networking.gke.io/managed-certificates: prd-nginx-certificate-1
     #networking.gke.io/v1beta1.FrontendConfig: prd-frontend-config
   
   rules:
@@ -84,7 +85,13 @@ ingress:
           backend:
             serviceName: rollout-bg-active
             servicePort: 80
-
+    - host: prd-argo.gyeongsik-tet.shop
+      http:
+        paths:
+        - path: /*
+          backend:
+            serviceName: rollout-bg-active
+            servicePort: 80
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:

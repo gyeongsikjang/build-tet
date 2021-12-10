@@ -1,9 +1,9 @@
-apiVersion: networking.gke.io/v1
-kind: ManagedCertificate
-metadata:
-  name: prd-nginx-certificate-1
-  namespace: {{ .Values.name }}
-spec:
-  domains:
-  # Replace the value with your domain name
-  - prd-nginx.gyeongsik-tet.shop
+# apiVersion: networking.gke.io/v1
+# kind: ManagedCertificate
+# metadata:
+#   name: prd-nginx-certificate-1
+#   namespace: {{ .Values.name }}
+# spec:
+#   domains:
+#   # Replace the value with your domain name
+#   - prd-nginx.gyeongsik-tet.shop
