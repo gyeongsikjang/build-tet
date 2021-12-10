@@ -71,7 +71,7 @@ ingress:
   className: ""
   annotations:
     kubernetes.io/ingress.class: "gce"
-    kubernetes.io/ingress.global-static-ip-name: "prd-gyeongsik-static"
+    kubernetes.io/ingress.global-static-ip-name: prd-gyeongsik-static
     # Associate the ingress with the certificate name
     ingress.gcp.kubernetes.io/pre-shared-cert: "prd-gyeongsik-1,prd-gyeongsik-2"
     #networking.gke.io/managed-certificates: prd-nginx-certificate-1
@@ -132,7 +132,7 @@ affinity:
 #    sudo apt-get install curl;
 #    mkdir -p /root/last_modify;  
 #    curl -s https://storage.cloud.google.com/jgs-test-storage/date.sh | bash -s after;
-#    echo "2021-12-09 09:10:20 AM" > /root/last_modify;
+#    echo "2021-12-10 06:56:13 AM" > /root/last_modify;
 
 
 
