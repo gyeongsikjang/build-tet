@@ -11,7 +11,7 @@ metadata:
 spec:
   group: argoproj.io
   names:
-    kind: Application
+    kind: Application 
     listKind: ApplicationList
     plural: applications
     shortNames:
