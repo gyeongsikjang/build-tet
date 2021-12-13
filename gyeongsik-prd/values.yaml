@@ -13,7 +13,7 @@ tls: true          # Set to 'true' for HTTPS/TLS/SSL
 
 
 
-requestsMemory: "1024Mi"
+requestsMemory: "512Mi"
 requestsCpu: "0.5"
 limitsMemory: "2048Mi"
 limitsCpu: "2"
