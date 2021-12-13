@@ -56,6 +56,8 @@ data:
           {{end}}
           ]
         }]
+      groupingKey: ""
+      notifyBroadcast: false
     teams:
       facts: |
         [{
@@ -75,7 +77,7 @@ data:
           {{if $index}},{{end}}
           {
             "name": "{{$c.type}}",
-            "value": "{{$c.message}}",
+            "value": "{{$c.message}}"
           }
         {{end}}
         ]
@@ -112,8 +114,8 @@ data:
           "color": "#f4c030",
           "fields": [
           {
-            "title": "Sync Status",
-            "value": "{{.app.status.sync.status}}",
+            "title": "Health Status",
+            "value": "{{.app.status.health.status}}",
             "short": true
           },
           {
@@ -132,11 +134,13 @@ data:
           {{end}}
           ]
         }]
+      groupingKey: ""
+      notifyBroadcast: false
     teams:
       facts: |
         [{
-          "name": "Sync Status",
-          "value": "{{.app.status.sync.status}}"
+          "name": "Health Status",
+          "value": "{{.app.status.health.status}}"
         },
         {
           "name": "Repository",
@@ -147,7 +151,7 @@ data:
           {{if $index}},{{end}}
           {
             "name": "{{$c.type}}",
-            "value": "{{$c.message}}",
+            "value": "{{$c.message}}"
           }
         {{end}}
         ]
@@ -204,6 +208,8 @@ data:
           {{end}}
           ]
         }]
+      groupingKey: ""
+      notifyBroadcast: false
     teams:
       facts: |
         [{
@@ -223,7 +229,7 @@ data:
           {{if $index}},{{end}}
           {
             "name": "{{$c.type}}",
-            "value": "{{$c.message}}",
+            "value": "{{$c.message}}"
           }
         {{end}}
         ]
@@ -280,6 +286,8 @@ data:
           {{end}}
           ]
         }]
+      groupingKey: ""
+      notifyBroadcast: false
     teams:
       facts: |
         [{
@@ -299,7 +307,7 @@ data:
           {{if $index}},{{end}}
           {
             "name": "{{$c.type}}",
-            "value": "{{$c.message}}",
+            "value": "{{$c.message}}"
           }
         {{end}}
         ]
@@ -360,6 +368,8 @@ data:
           {{end}}
           ]
         }]
+      groupingKey: ""
+      notifyBroadcast: false
     teams:
       facts: |
         [{
@@ -375,7 +385,7 @@ data:
           {{if $index}},{{end}}
           {
             "name": "{{$c.type}}",
-            "value": "{{$c.message}}",
+            "value": "{{$c.message}}"
           }
         {{end}}
         ]
@@ -431,6 +441,8 @@ data:
           {{end}}
           ]
         }]
+      groupingKey: ""
+      notifyBroadcast: false
     teams:
       facts: |
         [{
@@ -450,7 +462,7 @@ data:
           {{if $index}},{{end}}
           {
             "name": "{{$c.type}}",
-            "value": "{{$c.message}}",
+            "value": "{{$c.message}}"
           }
         {{end}}
         ]
@@ -490,7 +502,8 @@ data:
       oncePer: app.status.operationState.syncResult.revision
       send:
       - app-deployed
-      when: app.status.operationState.phase in ['Succeeded'] and app.status.health.status == 'Healthy'
+      when: app.status.operationState.phase in ['Succeeded'] and app.status.health.status
+        == 'Healthy'
   trigger.on-health-degraded: |
     - description: Application has degraded
       send:

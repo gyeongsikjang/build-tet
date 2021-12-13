@@ -67,8 +67,6 @@ kind: Secret
 metadata:
   name: argocd-notifications-secret
 type: Opaque
-# stringData:
-#   channel-teams-url: https://o365kongju.webhook.office.com/webhookb2/00eaf0b8-6029-4597-962f-8e6406d181a6@7a213ead-0b61-4f83-9f24-08cf51b6bf55/IncomingWebhook/7a7b3c33846443c18a25195a775c73e9/8b902869-5a0b-420c-be90-e15d17a2a49e
 ---
 apiVersion: v1
 kind: Service
@@ -100,18 +98,21 @@ spec:
       labels:
         app.kubernetes.io/name: argocd-notifications-controller
     spec:
-      nodeSelector:
-        cloud.google.com/gke-nodepool: default-pool 
       containers:
       - command:
         - /app/argocd-notifications-backend
         - controller
-        image: argoprojlabs/argocd-notifications:v1.1.1
+        image: argoprojlabs/argocd-notifications:v1.2.0
         imagePullPolicy: Always
+        livenessProbe:
+          tcpSocket:
+            port: 9001
         name: argocd-notifications-controller
         volumeMounts:
         - mountPath: /app/config/tls
           name: tls-certs
+        - mountPath: /app/config/reposerver/tls
+          name: argocd-repo-server-tls
         workingDir: /app
       securityContext:
         runAsNonRoot: true
@@ -120,5 +121,14 @@ spec:
       - configMap:
           name: argocd-tls-certs-cm
         name: tls-certs
-
-
+      - name: argocd-repo-server-tls
+        secret:
+          items:
+          - key: tls.crt
+            path: tls.crt
+          - key: tls.key
+            path: tls.key
+          - key: ca.crt
+            path: ca.crt
+          optional: true
+          secretName: argocd-repo-server-tls
