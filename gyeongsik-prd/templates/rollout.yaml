@@ -20,15 +20,15 @@ spec:
         name: {{ include "gyeongsik-prd.fullname" . }} 
         app: prd-nginx 
     spec:
-      #initContainers:
-      #  - name: clone
-      #    image: alpine/git:latest
-      #    {{- with .Values.initCommand }}
-      #    command:
-      #      {{- toYaml . | nindent 10 }}
-      #    {{- end }}
-      #imagePullSecrets:##
-      #- name: {{ .Values.imagePullSecrets }}
+      initContainers:
+       - name: clone
+         image: alpine/git:latest
+         {{- with .Values.initCommand }}
+         command:
+           {{- toYaml . | nindent 10 }}
+         {{- end }}
+      # imagePullSecrets:##
+      # - name: {{ .Values.imagePullSecrets }}
       containers:
         - image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}" 
           imagePullPolicy: {{ .Values.image.pullPolicy }}
