@@ -18,7 +18,7 @@ requestsCpu: "0.5"
 limitsMemory: "2048Mi"
 limitsCpu: "2"
 
-replicaCount: 4
+replicaCount: 2
 revisionHistoryLimit: 4
 maxSurge: 30%
 maxUnavailable: 30%
