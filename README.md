@@ -19,7 +19,7 @@
 > GCP(GKE)를 사용한 gitops + argoCD Deploy Repository 입니다.
   
 
-## 목차
+## 설명
 
 * ArgoCD-Deploy
 
