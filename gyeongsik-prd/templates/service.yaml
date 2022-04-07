@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: {{ .Values.service.name }}
   labels:
-    app: prd-nginx
+    app: argo-rollouts
   namespace: {{ .Values.name }}
 spec:
   type: {{ .Values.service.type }}
@@ -12,14 +12,14 @@ spec:
       targetPort: 8080
       protocol: TCP
   selector:
-    app: prd-nginx 
+    app: argo-rollouts
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: {{ .Values.prservice.name }}
   labels:
-    app: prd-nginx
+    app: argo-rollouts
   namespace: {{ .Values.name }}
 spec:
   type: {{ .Values.prservice.type }}
@@ -28,4 +28,4 @@ spec:
       targetPort: 8080
       protocol: TCP
   selector:
-    app: prd-nginx 
+    app: argo-rollouts

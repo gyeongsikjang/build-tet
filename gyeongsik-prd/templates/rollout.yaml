@@ -6,19 +6,19 @@ metadata:
   name: {{ include "gyeongsik-prd.fullname" . }} 
   namespace: {{ .Values.name }}
   labels:
-    app: prd-nginx 
+    app: argo-rollouts
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: prd-nginx 
+      app: argo-rollouts
       name: {{ include "gyeongsik-prd.fullname" . }} 
   template:
     metadata:
       labels:
         name: {{ include "gyeongsik-prd.fullname" . }} 
-        app: prd-nginx 
+        app: argo-rollouts
     spec:
       initContainers:
        - name: clone
