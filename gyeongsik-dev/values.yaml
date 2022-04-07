@@ -65,7 +65,7 @@ ingress:
   annotations:
     kubernetes.io/ingress.class: "gce"
     kubernetes.io/ingress.global-static-ip-name: nginx-dev-static
-    # Associate the ingress with the certificate name
+    #### Associate the ingress with the certificate name
     networking.gke.io/managed-certificates: dev-nginx-certificate
     #networking.gke.io/v1beta1.FrontendConfig: dev-frontend-config
   
