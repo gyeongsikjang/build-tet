@@ -9,7 +9,7 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: prd-neg-ingress
+  name: argo-rollout-ingress
   namespace: {{ .Values.name }}
   labels:
     {{- include "gyeongsik-prd.labels" . | nindent 4 }}
