@@ -3,9 +3,9 @@
 # Declare variables to be passed into your templates.
 
 # Default WordPress Site Info
-name: prd-gyeongsik        # Kubernetes Namespace (A-z,0-9,'-')
-app: prd-nginx            # kubernetes App label 
-domain: prd-nginx.gyeongsik-tet.shop     # Domain, e.g., mysite.com, mysite2.com, prd.anysite.com, etc.
+name: argo-rollout-demo       # Kubernetes Namespace (A-z,0-9,'-')
+app: argo-rollouts            # kubernetes App label 
+domain: argo-rollout.stan-gyeong.shop     # Domain, e.g., mysite.com, mysite2.com, prd.anysite.com, etc.
 nodepool: app-pool # Node Pool Name
 storage: 50Gi      # Storage Size
 ssd: false         # true=ssd, false=standard default
@@ -30,8 +30,8 @@ image:
 
 
 imagePullSecrets: gyeongsik-secret 
-nameOverride: "prd-gyeongsik"
-fullnameOverride: "prd-gyeongsik"
+nameOverride: "argo-rollouts"
+fullnameOverride: "argo-rollouts"
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -73,25 +73,25 @@ ingress:
     kubernetes.io/ingress.class: "gce"
     kubernetes.io/ingress.global-static-ip-name: prd-gyeongsik-static
     # Associate the ingress with the certificate name
-    ingress.gcp.kubernetes.io/pre-shared-cert: "prd-gyeongsik-1,prd-gyeongsik-2"
-    #networking.gke.io/managed-certificates: prd-nginx-certificate-1
+    #ingress.gcp.kubernetes.io/pre-shared-cert: "prd-gyeongsik-1,prd-gyeongsik-2"
+    networking.gke.io/managed-certificates: argo-rollout-certificate
     networking.gke.io/v1beta1.FrontendConfig: prd-frontend-config
   
   rules:
-    - host: prd-nginx.gyeongsik-tet.shop
+    - host: argo-rollout.stan-gyeong.shop
       http:
         paths:
         - path: /*
           backend:
             serviceName: rollout-bg-active
             servicePort: 80
-    - host: prd-argo.gyeongsik-tet.shop
-      http:
-        paths:
-        - path: /*
-          backend:
-            serviceName: rollout-bg-active
-            servicePort: 80
+    # - host: prd-argo.gyeongsik-tet.shop
+    #   http:
+    #     paths:
+    #     - path: /*
+    #       backend:
+    #         serviceName: rollout-bg-active
+    #         servicePort: 80
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
