@@ -6,7 +6,7 @@ metadata:
   #namespace: argocd
 spec:
   domains:
-    - dev-spring.gyeongsik-tet.shop
+    - argocd.stan-gyeong.shop
 --- 
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
@@ -14,7 +14,7 @@ metadata:
   name: argo-ingress
   annotations:
     kubernetes.io/ingress.class: "gce"
-    kubernetes.io/ingress.global-static-ip-name: jgs-ssl-tet-ip	
+    kubernetes.io/ingress.global-static-ip-name: gke-gyeongsik-argocd
     #Associate the ingress with the certificate name
     networking.gke.io/managed-certificates: dev-gyeongsik-certificate
     networking.gke.io/v1beta1.FrontendConfig: argocd-frontendconfig
@@ -24,7 +24,7 @@ metadata:
     app.kubernetes.io/component: server
 spec:
   rules:
-    - host: dev-spring.gyeongsik-tet.shop
+    - host: argocd.stan-gyeong.shop
       http:
         paths:
           - path: /*
