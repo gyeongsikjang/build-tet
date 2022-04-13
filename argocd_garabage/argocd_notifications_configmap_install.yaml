@@ -2,7 +2,7 @@ apiVersion: v1
 data:
   #Context ArgoCD URL GCP LB에 맞게 수정
   context: |
-    argocdUrl: https://dev-spring.gyeongsik-tet.shop
+    argocdUrl: https://argocd.silent-brain.com
   service.teams: |
     recipientUrls: 
       iaas-ArgoCD: https://o365kongju.webhook.office.com/webhookb2/00eaf0b8-6029-4597-962f-8e6406d181a6@7a213ead-0b61-4f83-9f24-08cf51b6bf55/IncomingWebhook/7a7b3c33846443c18a25195a775c73e9/8b902869-5a0b-420c-be90-e15d17a2a49e
